@@ -1,0 +1,5 @@
+.idea
+.vs
+packages
+bunk_generator/bin
+bunk_generator/obj
