@@ -1,16 +1,18 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
-using bunk_generator.enums;
-using bunk_generator.interfaces;
+using System.Text.Json.Serialization;
+using bunk_generator.Enums;
+using bunk_generator.Interfaces;
 
-namespace bunk_generator.handlers
+
+namespace bunk_generator.Services
 {
     public class Person: IPerson
     {
-        private readonly string _PERSONS_DIRECTORY = "persons";
-        private readonly Random _random;
+        private readonly string _PERSONS_DIRECTORY = "characteristics";
+        private Random _random;
         public int Id { get; private set; }
         public string Gender { get; private set; }
         public string Age { get; private set; }
@@ -39,7 +41,7 @@ namespace bunk_generator.handlers
 
         public Person(int i)
         {
-            _random = new Random();
+            _random = new Random(i*100 + i * 2 + i % 3);
             Id = i;
             Gender = this.GenerateCharacteristic(CharacteristicType.Gender);
             Job = this.GenerateCharacteristic(CharacteristicType.Job);
@@ -52,6 +54,27 @@ namespace bunk_generator.handlers
             Fact2 = this.GenerateCharacteristic(CharacteristicType.Fact2);
         }
 
+        [JsonConstructor]
+        public Person(int id, string gender, string age, string job, bool fertility, string health, string phobia, string hobby, string baggage, string fact1, string fact2)
+        {
+            Id = id;
+            Gender = gender;
+            Age = age;
+            Job = job;
+            Fertility = fertility;
+            Health = health;
+            Phobia = phobia;
+            Hobby = hobby;
+            Baggage = baggage;
+            Fact1 = fact1;
+            Fact2 = fact2;
+        }
+
+        public string ToJson()
+        {
+            return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
+        }
+        
         public override string ToString()
         {
             return $"№ {this.Id}\n" +
@@ -87,42 +110,14 @@ namespace bunk_generator.handlers
             return characters[_random.Next(characters.Count)];
         }
 
-        public Person ChangeCharacteristic(CharacteristicType type, Person person)
+        public static List<Person> GeneratePersons(int count)
         {
-            string newChar = this.GenerateCharacteristic(type);
-
-            switch (type)
+            List<Person> persons = new List<Person>();
+            for (int i = 0; i < count; i++)
             {
-                case CharacteristicType.Job:
-                    person.Job = newChar;
-                    break;
-                case CharacteristicType.Gender:
-                    person.Gender = newChar;
-                    break;
-                case CharacteristicType.Age:
-                    person.Age = newChar;
-                    break;
-                case CharacteristicType.Health:
-                    person.Health = newChar;
-                    break;
-                case CharacteristicType.Phobia:
-                    person.Gender = newChar;
-                    break;
-                case CharacteristicType.Hobby:
-                    person.Hobby = newChar;
-                    break;
-                case CharacteristicType.Baggage:
-                    person.Baggage = newChar;
-                    break;
-                case CharacteristicType.Fact1:
-                    person.Fact1 = newChar;
-                    break;
-                case CharacteristicType.Fact2:
-                    person.Fact2 = newChar;
-                    break;
+                persons.Add(new Person(i + 1));
             }
-
-            return person;
+            return persons;
         }
     }
 }

@@ -25,7 +25,7 @@ namespace bunk_generator
             Console.OutputEncoding = Encoding.UTF8;
 
             Env.Load(".env");
-            
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());

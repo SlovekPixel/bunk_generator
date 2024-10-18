@@ -1,8 +1,4 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
-using DotNetEnv;
-
-namespace bunk_generator
+﻿namespace bunk_generator
 {
     partial class Form1
     {
@@ -33,378 +29,390 @@ namespace bunk_generator
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Panel settings_panel;
-            System.Windows.Forms.Label lbl_persons_count;
-            System.Windows.Forms.Label settings;
-            System.Windows.Forms.Label Charact_chages;
-            System.Windows.Forms.Label changeOne_label;
-            System.Windows.Forms.Label changeOne_person_label;
-            System.Windows.Forms.Label changeOne_charact_label;
-            this.blockPanel = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btn_clear = new System.Windows.Forms.Button();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.checkBox_specialConditions = new System.Windows.Forms.CheckBox();
-            this.btn_start = new System.Windows.Forms.Button();
-            this.btn_load_settings = new System.Windows.Forms.Button();
-            this.dec_count_persons = new System.Windows.Forms.Button();
-            this.btn_save_settings = new System.Windows.Forms.Button();
-            this.txt_person_counter = new System.Windows.Forms.TextBox();
-            this.inc_count_persons = new System.Windows.Forms.Button();
-            this.personsBox = new System.Windows.Forms.GroupBox();
-            this.changes = new System.Windows.Forms.Panel();
-            this.changeOne_combobox_button = new System.Windows.Forms.Button();
-            this.changeOne_combobox_person_number = new System.Windows.Forms.ComboBox();
-            this.changeOne_combobox_charact = new System.Windows.Forms.ComboBox();
-            this.btnShowData = new System.Windows.Forms.Button();
-            settings_panel = new System.Windows.Forms.Panel();
-            lbl_persons_count = new System.Windows.Forms.Label();
-            settings = new System.Windows.Forms.Label();
-            Charact_chages = new System.Windows.Forms.Label();
-            changeOne_label = new System.Windows.Forms.Label();
-            changeOne_person_label = new System.Windows.Forms.Label();
-            changeOne_charact_label = new System.Windows.Forms.Label();
-            settings_panel.SuspendLayout();
-            this.changes.SuspendLayout();
+            this.settings_panel = new System.Windows.Forms.GroupBox();
+            this.checkBox_3 = new System.Windows.Forms.CheckBox();
+            this.checkBox_2 = new System.Windows.Forms.CheckBox();
+            this.checkBox_special_conditions = new System.Windows.Forms.CheckBox();
+            this.button_start_settings = new System.Windows.Forms.Button();
+            this.button_stop_settings = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button_load_settings = new System.Windows.Forms.Button();
+            this.button_save_settings = new System.Windows.Forms.Button();
+            this.textBox_persons_counter = new System.Windows.Forms.TextBox();
+            this.button_inc_persons_counter = new System.Windows.Forms.Button();
+            this.button_dec_persons_counter = new System.Windows.Forms.Button();
+            this.label_person_counter = new System.Windows.Forms.Label();
+            this.changes_panel = new System.Windows.Forms.GroupBox();
+            this.comboBox_change_all_charact = new System.Windows.Forms.ComboBox();
+            this.button_change_all_characteristic = new System.Windows.Forms.Button();
+            this.label_change_all_characteristic_charact = new System.Windows.Forms.Label();
+            this.label_change_all_characteristic = new System.Windows.Forms.Label();
+            this.comboBox_change_one_charact = new System.Windows.Forms.ComboBox();
+            this.comboBox_change_one_person = new System.Windows.Forms.ComboBox();
+            this.button_change_one_characteristic = new System.Windows.Forms.Button();
+            this.label_change_one_characteristic_charact = new System.Windows.Forms.Label();
+            this.label_change_one_characteristic_person = new System.Windows.Forms.Label();
+            this.label_change_one_characteristic = new System.Windows.Forms.Label();
+            this.persons_panel = new System.Windows.Forms.GroupBox();
+            this.settings_panel.SuspendLayout();
+            this.changes_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // settings_panel
             // 
-            settings_panel.BackColor = System.Drawing.SystemColors.MenuBar;
-            settings_panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            settings_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            settings_panel.CausesValidation = false;
-            settings_panel.Controls.Add(this.blockPanel);
-            settings_panel.Controls.Add(this.button2);
-            settings_panel.Controls.Add(this.button1);
-            settings_panel.Controls.Add(this.btn_clear);
-            settings_panel.Controls.Add(this.checkBox3);
-            settings_panel.Controls.Add(this.checkBox2);
-            settings_panel.Controls.Add(this.checkBox_specialConditions);
-            settings_panel.Controls.Add(this.btn_start);
-            settings_panel.Controls.Add(this.btn_load_settings);
-            settings_panel.Controls.Add(lbl_persons_count);
-            settings_panel.Controls.Add(this.dec_count_persons);
-            settings_panel.Controls.Add(this.btn_save_settings);
-            settings_panel.Controls.Add(settings);
-            settings_panel.Controls.Add(this.txt_person_counter);
-            settings_panel.Controls.Add(this.inc_count_persons);
-            settings_panel.Location = new System.Drawing.Point(12, 12);
-            settings_panel.Name = "settings_panel";
-            settings_panel.Size = new System.Drawing.Size(300, 347);
-            settings_panel.TabIndex = 5;
+            this.settings_panel.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.settings_panel.Controls.Add(this.checkBox_3);
+            this.settings_panel.Controls.Add(this.checkBox_2);
+            this.settings_panel.Controls.Add(this.checkBox_special_conditions);
+            this.settings_panel.Controls.Add(this.button_start_settings);
+            this.settings_panel.Controls.Add(this.button_stop_settings);
+            this.settings_panel.Controls.Add(this.button4);
+            this.settings_panel.Controls.Add(this.button3);
+            this.settings_panel.Controls.Add(this.button_load_settings);
+            this.settings_panel.Controls.Add(this.button_save_settings);
+            this.settings_panel.Controls.Add(this.textBox_persons_counter);
+            this.settings_panel.Controls.Add(this.button_inc_persons_counter);
+            this.settings_panel.Controls.Add(this.button_dec_persons_counter);
+            this.settings_panel.Controls.Add(this.label_person_counter);
+            this.settings_panel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.settings_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.settings_panel.ForeColor = System.Drawing.Color.Black;
+            this.settings_panel.Location = new System.Drawing.Point(12, 12);
+            this.settings_panel.Name = "settings_panel";
+            this.settings_panel.Size = new System.Drawing.Size(300, 300);
+            this.settings_panel.TabIndex = 1;
+            this.settings_panel.TabStop = false;
+            this.settings_panel.Text = "Settings";
             // 
-            // blockPanel
+            // checkBox_3
             // 
-            this.blockPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.blockPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.blockPanel.Enabled = false;
-            this.blockPanel.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.blockPanel.Location = new System.Drawing.Point(7, 44);
-            this.blockPanel.Name = "blockPanel";
-            this.blockPanel.Size = new System.Drawing.Size(282, 59);
-            this.blockPanel.TabIndex = 0;
-            this.blockPanel.Visible = false;
+            this.checkBox_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox_3.Location = new System.Drawing.Point(6, 113);
+            this.checkBox_3.Name = "checkBox_3";
+            this.checkBox_3.Size = new System.Drawing.Size(288, 24);
+            this.checkBox_3.TabIndex = 13;
+            this.checkBox_3.Text = "checkBox3";
+            this.checkBox_3.UseVisualStyleBackColor = true;
+            this.checkBox_3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
             // 
-            // button2
+            // checkBox_2
             // 
-            this.button2.Location = new System.Drawing.Point(103, 292);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(90, 45);
-            this.button2.TabIndex = 16;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.checkBox_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox_2.Location = new System.Drawing.Point(6, 83);
+            this.checkBox_2.Name = "checkBox_2";
+            this.checkBox_2.Size = new System.Drawing.Size(288, 24);
+            this.checkBox_2.TabIndex = 12;
+            this.checkBox_2.Text = "checkBox2";
+            this.checkBox_2.UseVisualStyleBackColor = true;
+            this.checkBox_2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
-            // button1
+            // checkBox_special_conditions
             // 
-            this.button1.Location = new System.Drawing.Point(103, 241);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(90, 45);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.checkBox_special_conditions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox_special_conditions.Location = new System.Drawing.Point(6, 53);
+            this.checkBox_special_conditions.Name = "checkBox_special_conditions";
+            this.checkBox_special_conditions.Size = new System.Drawing.Size(288, 24);
+            this.checkBox_special_conditions.TabIndex = 11;
+            this.checkBox_special_conditions.Text = "Specific conditions?";
+            this.checkBox_special_conditions.UseVisualStyleBackColor = true;
+            this.checkBox_special_conditions.CheckedChanged += new System.EventHandler(this.checkBox_special_conditions_CheckedChanged);
             // 
-            // btn_clear
+            // button_start_settings
             // 
-            this.btn_clear.Location = new System.Drawing.Point(199, 241);
-            this.btn_clear.Name = "btn_clear";
-            this.btn_clear.Size = new System.Drawing.Size(90, 45);
-            this.btn_clear.TabIndex = 14;
-            this.btn_clear.Text = "Clear";
-            this.btn_clear.UseVisualStyleBackColor = true;
-            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            this.button_start_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_start_settings.Location = new System.Drawing.Point(209, 264);
+            this.button_start_settings.Name = "button_start_settings";
+            this.button_start_settings.Size = new System.Drawing.Size(85, 30);
+            this.button_start_settings.TabIndex = 10;
+            this.button_start_settings.Text = "Start";
+            this.button_start_settings.UseVisualStyleBackColor = true;
+            this.button_start_settings.Click += new System.EventHandler(this.button_start_settings_Click);
             // 
-            // checkBox3
+            // button_stop_settings
             // 
-            this.checkBox3.Location = new System.Drawing.Point(14, 195);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(275, 40);
-            this.checkBox3.TabIndex = 13;
-            this.checkBox3.Text = "checkBox3";
-            this.checkBox3.UseVisualStyleBackColor = true;
+            this.button_stop_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_stop_settings.Location = new System.Drawing.Point(209, 228);
+            this.button_stop_settings.Name = "button_stop_settings";
+            this.button_stop_settings.Size = new System.Drawing.Size(85, 30);
+            this.button_stop_settings.TabIndex = 9;
+            this.button_stop_settings.Text = "Stop";
+            this.button_stop_settings.UseVisualStyleBackColor = true;
+            this.button_stop_settings.Click += new System.EventHandler(this.button_stop_settings_Click);
             // 
-            // checkBox2
+            // button4
             // 
-            this.checkBox2.Location = new System.Drawing.Point(14, 149);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(275, 40);
-            this.checkBox2.TabIndex = 12;
-            this.checkBox2.Text = "checkBox2";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.Location = new System.Drawing.Point(108, 264);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(85, 30);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            // checkBox_specialConditions
+            // button3
             // 
-            this.checkBox_specialConditions.Location = new System.Drawing.Point(14, 103);
-            this.checkBox_specialConditions.Name = "checkBox_specialConditions";
-            this.checkBox_specialConditions.Size = new System.Drawing.Size(275, 40);
-            this.checkBox_specialConditions.TabIndex = 11;
-            this.checkBox_specialConditions.Text = "Specific conditions?";
-            this.checkBox_specialConditions.UseVisualStyleBackColor = true;
-            this.checkBox_specialConditions.CheckedChanged += new System.EventHandler(this.checkBox_specialConditions_CheckedChanged);
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(108, 228);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(85, 30);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // btn_start
+            // button_load_settings
             // 
-            this.btn_start.Location = new System.Drawing.Point(199, 292);
-            this.btn_start.Name = "btn_start";
-            this.btn_start.Size = new System.Drawing.Size(90, 45);
-            this.btn_start.TabIndex = 10;
-            this.btn_start.Text = "Start";
-            this.btn_start.UseVisualStyleBackColor = true;
-            this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
+            this.button_load_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_load_settings.Location = new System.Drawing.Point(6, 264);
+            this.button_load_settings.Name = "button_load_settings";
+            this.button_load_settings.Size = new System.Drawing.Size(85, 30);
+            this.button_load_settings.TabIndex = 6;
+            this.button_load_settings.Text = "Load";
+            this.button_load_settings.UseVisualStyleBackColor = true;
+            this.button_load_settings.Click += new System.EventHandler(this.button_load_settings_Click);
             // 
-            // btn_load_settings
+            // button_save_settings
             // 
-            this.btn_load_settings.Location = new System.Drawing.Point(7, 292);
-            this.btn_load_settings.Name = "btn_load_settings";
-            this.btn_load_settings.Size = new System.Drawing.Size(90, 45);
-            this.btn_load_settings.TabIndex = 9;
-            this.btn_load_settings.Text = "Load";
-            this.btn_load_settings.UseVisualStyleBackColor = true;
-            this.btn_load_settings.Click += new System.EventHandler(this.btn_load_settings_Click);
+            this.button_save_settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_save_settings.Location = new System.Drawing.Point(6, 228);
+            this.button_save_settings.Name = "button_save_settings";
+            this.button_save_settings.Size = new System.Drawing.Size(85, 30);
+            this.button_save_settings.TabIndex = 5;
+            this.button_save_settings.Text = "Save";
+            this.button_save_settings.UseVisualStyleBackColor = true;
+            this.button_save_settings.Click += new System.EventHandler(this.button_save_settings_Click);
             // 
-            // lbl_persons_count
+            // textBox_persons_counter
             // 
-            lbl_persons_count.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            lbl_persons_count.Location = new System.Drawing.Point(14, 50);
-            lbl_persons_count.Name = "lbl_persons_count";
-            lbl_persons_count.Size = new System.Drawing.Size(70, 26);
-            lbl_persons_count.TabIndex = 8;
-            lbl_persons_count.Text = "Persons";
+            this.textBox_persons_counter.Location = new System.Drawing.Point(91, 25);
+            this.textBox_persons_counter.Name = "textBox_persons_counter";
+            this.textBox_persons_counter.Size = new System.Drawing.Size(84, 26);
+            this.textBox_persons_counter.TabIndex = 4;
+            this.textBox_persons_counter.Text = "4";
+            this.textBox_persons_counter.TextChanged += new System.EventHandler(this.textBox_persons_counter_TextChanged);
             // 
-            // dec_count_persons
+            // button_inc_persons_counter
             // 
-            this.dec_count_persons.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.dec_count_persons.Location = new System.Drawing.Point(170, 44);
-            this.dec_count_persons.Margin = new System.Windows.Forms.Padding(0);
-            this.dec_count_persons.Name = "dec_count_persons";
-            this.dec_count_persons.Size = new System.Drawing.Size(39, 38);
-            this.dec_count_persons.TabIndex = 1;
-            this.dec_count_persons.Text = "<";
-            this.dec_count_persons.UseVisualStyleBackColor = true;
-            this.dec_count_persons.Click += new System.EventHandler(this.dec_count_persons_Click);
+            this.button_inc_persons_counter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_inc_persons_counter.Location = new System.Drawing.Point(227, 21);
+            this.button_inc_persons_counter.Name = "button_inc_persons_counter";
+            this.button_inc_persons_counter.Size = new System.Drawing.Size(40, 25);
+            this.button_inc_persons_counter.TabIndex = 3;
+            this.button_inc_persons_counter.Text = ">";
+            this.button_inc_persons_counter.UseVisualStyleBackColor = true;
+            this.button_inc_persons_counter.Click += new System.EventHandler(this.button_inc_persons_counter_Click);
             // 
-            // btn_save_settings
+            // button_dec_persons_counter
             // 
-            this.btn_save_settings.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_save_settings.Location = new System.Drawing.Point(7, 241);
-            this.btn_save_settings.Name = "btn_save_settings";
-            this.btn_save_settings.Size = new System.Drawing.Size(90, 45);
-            this.btn_save_settings.TabIndex = 3;
-            this.btn_save_settings.Text = "Save";
-            this.btn_save_settings.UseVisualStyleBackColor = true;
-            this.btn_save_settings.Click += new System.EventHandler(this.btn_save_settings_Click);
+            this.button_dec_persons_counter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_dec_persons_counter.Location = new System.Drawing.Point(181, 21);
+            this.button_dec_persons_counter.Name = "button_dec_persons_counter";
+            this.button_dec_persons_counter.Size = new System.Drawing.Size(40, 25);
+            this.button_dec_persons_counter.TabIndex = 2;
+            this.button_dec_persons_counter.Text = "<";
+            this.button_dec_persons_counter.UseVisualStyleBackColor = true;
+            this.button_dec_persons_counter.Click += new System.EventHandler(this.button_dec_persons_counter_Click);
             // 
-            // settings
+            // label_person_counter
             // 
-            settings.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            settings.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            settings.Location = new System.Drawing.Point(7, 12);
-            settings.Name = "settings";
-            settings.Size = new System.Drawing.Size(282, 23);
-            settings.TabIndex = 7;
-            settings.Text = "Generation settings:";
+            this.label_person_counter.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_person_counter.Location = new System.Drawing.Point(6, 25);
+            this.label_person_counter.Name = "label_person_counter";
+            this.label_person_counter.Size = new System.Drawing.Size(79, 22);
+            this.label_person_counter.TabIndex = 1;
+            this.label_person_counter.Text = "Persons:";
             // 
-            // txt_person_counter
+            // changes_panel
             // 
-            this.txt_person_counter.Location = new System.Drawing.Point(90, 50);
-            this.txt_person_counter.Name = "txt_person_counter";
-            this.txt_person_counter.Size = new System.Drawing.Size(77, 26);
-            this.txt_person_counter.TabIndex = 0;
-            this.txt_person_counter.Tag = "txt_person_counter";
-            this.txt_person_counter.Text = "4";
-            this.txt_person_counter.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_person_counter.TextChanged += new System.EventHandler(this.txt_person_counter_TextChanged);
+            this.changes_panel.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.changes_panel.Controls.Add(this.comboBox_change_all_charact);
+            this.changes_panel.Controls.Add(this.button_change_all_characteristic);
+            this.changes_panel.Controls.Add(this.label_change_all_characteristic_charact);
+            this.changes_panel.Controls.Add(this.label_change_all_characteristic);
+            this.changes_panel.Controls.Add(this.comboBox_change_one_charact);
+            this.changes_panel.Controls.Add(this.comboBox_change_one_person);
+            this.changes_panel.Controls.Add(this.button_change_one_characteristic);
+            this.changes_panel.Controls.Add(this.label_change_one_characteristic_charact);
+            this.changes_panel.Controls.Add(this.label_change_one_characteristic_person);
+            this.changes_panel.Controls.Add(this.label_change_one_characteristic);
+            this.changes_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.changes_panel.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.changes_panel.Location = new System.Drawing.Point(12, 318);
+            this.changes_panel.Name = "changes_panel";
+            this.changes_panel.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.changes_panel.Size = new System.Drawing.Size(300, 351);
+            this.changes_panel.TabIndex = 2;
+            this.changes_panel.TabStop = false;
+            this.changes_panel.Text = "Characterization changes";
             // 
-            // inc_count_persons
+            // comboBox_change_all_charact
             // 
-            this.inc_count_persons.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.inc_count_persons.Location = new System.Drawing.Point(209, 44);
-            this.inc_count_persons.Margin = new System.Windows.Forms.Padding(0);
-            this.inc_count_persons.Name = "inc_count_persons";
-            this.inc_count_persons.Size = new System.Drawing.Size(39, 38);
-            this.inc_count_persons.TabIndex = 2;
-            this.inc_count_persons.Text = ">";
-            this.inc_count_persons.UseVisualStyleBackColor = true;
-            this.inc_count_persons.Click += new System.EventHandler(this.inc_count_persons_Click);
+            this.comboBox_change_all_charact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_change_all_charact.FormattingEnabled = true;
+            this.comboBox_change_all_charact.Location = new System.Drawing.Point(138, 169);
+            this.comboBox_change_all_charact.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox_change_all_charact.Name = "comboBox_change_all_charact";
+            this.comboBox_change_all_charact.Size = new System.Drawing.Size(97, 28);
+            this.comboBox_change_all_charact.TabIndex = 9;
             // 
-            // Charact_chages
+            // button_change_all_characteristic
             // 
-            Charact_chages.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            Charact_chages.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            Charact_chages.Location = new System.Drawing.Point(7, 14);
-            Charact_chages.Name = "Charact_chages";
-            Charact_chages.Size = new System.Drawing.Size(282, 23);
-            Charact_chages.TabIndex = 17;
-            Charact_chages.Text = "Characterization changes:";
+            this.button_change_all_characteristic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_change_all_characteristic.Location = new System.Drawing.Point(6, 196);
+            this.button_change_all_characteristic.Name = "button_change_all_characteristic";
+            this.button_change_all_characteristic.Size = new System.Drawing.Size(85, 30);
+            this.button_change_all_characteristic.TabIndex = 8;
+            this.button_change_all_characteristic.Text = "Change";
+            this.button_change_all_characteristic.UseVisualStyleBackColor = true;
             // 
-            // changeOne_label
+            // label_change_all_characteristic_charact
             // 
-            changeOne_label.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            changeOne_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            changeOne_label.Location = new System.Drawing.Point(7, 54);
-            changeOne_label.Name = "changeOne_label";
-            changeOne_label.Size = new System.Drawing.Size(282, 23);
-            changeOne_label.TabIndex = 18;
-            changeOne_label.Text = "Change in one characteristic:";
+            this.label_change_all_characteristic_charact.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_change_all_characteristic_charact.Location = new System.Drawing.Point(6, 169);
+            this.label_change_all_characteristic_charact.Name = "label_change_all_characteristic_charact";
+            this.label_change_all_characteristic_charact.Size = new System.Drawing.Size(127, 24);
+            this.label_change_all_characteristic_charact.TabIndex = 7;
+            this.label_change_all_characteristic_charact.Text = "Characteristic:";
             // 
-            // changeOne_person_label
+            // label_change_all_characteristic
             // 
-            changeOne_person_label.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            changeOne_person_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            changeOne_person_label.Location = new System.Drawing.Point(7, 89);
-            changeOne_person_label.Name = "changeOne_person_label";
-            changeOne_person_label.Size = new System.Drawing.Size(133, 23);
-            changeOne_person_label.TabIndex = 19;
-            changeOne_person_label.Text = "Person\'s number:";
+            this.label_change_all_characteristic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_change_all_characteristic.Location = new System.Drawing.Point(6, 149);
+            this.label_change_all_characteristic.Name = "label_change_all_characteristic";
+            this.label_change_all_characteristic.Size = new System.Drawing.Size(288, 23);
+            this.label_change_all_characteristic.TabIndex = 6;
+            this.label_change_all_characteristic.Text = "Change all characteristics for everyone:";
             // 
-            // changeOne_charact_label
+            // comboBox_change_one_charact
             // 
-            changeOne_charact_label.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            changeOne_charact_label.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            changeOne_charact_label.Location = new System.Drawing.Point(7, 123);
-            changeOne_charact_label.Name = "changeOne_charact_label";
-            changeOne_charact_label.Size = new System.Drawing.Size(133, 23);
-            changeOne_charact_label.TabIndex = 20;
-            changeOne_charact_label.Text = "Characteristic:";
+            this.comboBox_change_one_charact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_change_one_charact.FormattingEnabled = true;
+            this.comboBox_change_one_charact.Location = new System.Drawing.Point(138, 76);
+            this.comboBox_change_one_charact.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox_change_one_charact.Name = "comboBox_change_one_charact";
+            this.comboBox_change_one_charact.Size = new System.Drawing.Size(97, 28);
+            this.comboBox_change_one_charact.TabIndex = 5;
             // 
-            // personsBox
+            // comboBox_change_one_person
             // 
-            this.personsBox.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.personsBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.personsBox.Location = new System.Drawing.Point(318, 12);
-            this.personsBox.Name = "personsBox";
-            this.personsBox.Size = new System.Drawing.Size(1584, 1016);
-            this.personsBox.TabIndex = 6;
-            this.personsBox.TabStop = false;
+            this.comboBox_change_one_person.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_change_one_person.FormattingEnabled = true;
+            this.comboBox_change_one_person.Location = new System.Drawing.Point(138, 50);
+            this.comboBox_change_one_person.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBox_change_one_person.Name = "comboBox_change_one_person";
+            this.comboBox_change_one_person.Size = new System.Drawing.Size(97, 28);
+            this.comboBox_change_one_person.TabIndex = 4;
             // 
-            // changes
+            // button_change_one_characteristic
             // 
-            this.changes.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.changes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.changes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.changes.Controls.Add(this.changeOne_combobox_button);
-            this.changes.Controls.Add(changeOne_charact_label);
-            this.changes.Controls.Add(changeOne_person_label);
-            this.changes.Controls.Add(changeOne_label);
-            this.changes.Controls.Add(Charact_chages);
-            this.changes.Controls.Add(this.changeOne_combobox_person_number);
-            this.changes.Controls.Add(this.changeOne_combobox_charact);
-            this.changes.Location = new System.Drawing.Point(12, 365);
-            this.changes.Name = "changes";
-            this.changes.Size = new System.Drawing.Size(300, 663);
-            this.changes.TabIndex = 7;
+            this.button_change_one_characteristic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_change_one_characteristic.Location = new System.Drawing.Point(6, 103);
+            this.button_change_one_characteristic.Name = "button_change_one_characteristic";
+            this.button_change_one_characteristic.Size = new System.Drawing.Size(85, 30);
+            this.button_change_one_characteristic.TabIndex = 3;
+            this.button_change_one_characteristic.Text = "Change";
+            this.button_change_one_characteristic.UseVisualStyleBackColor = true;
             // 
-            // changeOne_combobox_button
+            // label_change_one_characteristic_charact
             // 
-            this.changeOne_combobox_button.Location = new System.Drawing.Point(7, 154);
-            this.changeOne_combobox_button.Name = "changeOne_combobox_button";
-            this.changeOne_combobox_button.Size = new System.Drawing.Size(282, 45);
-            this.changeOne_combobox_button.TabIndex = 21;
-            this.changeOne_combobox_button.Text = "Change";
-            this.changeOne_combobox_button.UseVisualStyleBackColor = true;
-            this.changeOne_combobox_button.Click += new System.EventHandler(this.changeOne_combobox_button_Click);
+            this.label_change_one_characteristic_charact.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_change_one_characteristic_charact.Location = new System.Drawing.Point(6, 76);
+            this.label_change_one_characteristic_charact.Name = "label_change_one_characteristic_charact";
+            this.label_change_one_characteristic_charact.Size = new System.Drawing.Size(127, 24);
+            this.label_change_one_characteristic_charact.TabIndex = 2;
+            this.label_change_one_characteristic_charact.Text = "Characteristic:";
             // 
-            // changeOne_combobox_person_number
+            // label_change_one_characteristic_person
             // 
-            this.changeOne_combobox_person_number.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.changeOne_combobox_person_number.FormattingEnabled = true;
-            this.changeOne_combobox_person_number.Location = new System.Drawing.Point(146, 86);
-            this.changeOne_combobox_person_number.Name = "changeOne_combobox_person_number";
-            this.changeOne_combobox_person_number.Size = new System.Drawing.Size(143, 28);
-            this.changeOne_combobox_person_number.TabIndex = 1;
+            this.label_change_one_characteristic_person.Font = new System.Drawing.Font("Book Antiqua", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_change_one_characteristic_person.Location = new System.Drawing.Point(6, 52);
+            this.label_change_one_characteristic_person.Name = "label_change_one_characteristic_person";
+            this.label_change_one_characteristic_person.Size = new System.Drawing.Size(127, 24);
+            this.label_change_one_characteristic_person.TabIndex = 1;
+            this.label_change_one_characteristic_person.Text = "Person\'s number:";
             // 
-            // changeOne_combobox_charact
+            // label_change_one_characteristic
             // 
-            this.changeOne_combobox_charact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.changeOne_combobox_charact.FormattingEnabled = true;
-            this.changeOne_combobox_charact.Location = new System.Drawing.Point(146, 120);
-            this.changeOne_combobox_charact.Name = "changeOne_combobox_charact";
-            this.changeOne_combobox_charact.Size = new System.Drawing.Size(143, 28);
-            this.changeOne_combobox_charact.TabIndex = 0;
+            this.label_change_one_characteristic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_change_one_characteristic.Location = new System.Drawing.Point(6, 29);
+            this.label_change_one_characteristic.Name = "label_change_one_characteristic";
+            this.label_change_one_characteristic.Size = new System.Drawing.Size(288, 23);
+            this.label_change_one_characteristic.TabIndex = 0;
+            this.label_change_one_characteristic.Text = "Change in one characteristic:";
             // 
-            // btnShowData
+            // persons_panel
             // 
-            this.btnShowData.Location = new System.Drawing.Point(0, 0);
-            this.btnShowData.Name = "btnShowData";
-            this.btnShowData.Size = new System.Drawing.Size(75, 23);
-            this.btnShowData.TabIndex = 0;
+            this.persons_panel.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.persons_panel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.persons_panel.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.persons_panel.Location = new System.Drawing.Point(318, 12);
+            this.persons_panel.Name = "persons_panel";
+            this.persons_panel.Size = new System.Drawing.Size(934, 657);
+            this.persons_panel.TabIndex = 3;
+            this.persons_panel.TabStop = false;
+            this.persons_panel.Text = "Persons";
             // 
             // Form1
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1914, 1040);
-            this.Controls.Add(this.changes);
-            this.Controls.Add(this.personsBox);
-            this.Controls.Add(settings_panel);
+            this.ClientSize = new System.Drawing.Size(1274, 691);
+            this.Controls.Add(this.persons_panel);
+            this.Controls.Add(this.changes_panel);
+            this.Controls.Add(this.settings_panel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1920, 1080);
-            this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(200, 200);
+            this.MaximumSize = new System.Drawing.Size(1280, 720);
+            this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "Form1";
-            this.Tag = "";
-            this.Text = "Bunk_generator";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            settings_panel.ResumeLayout(false);
-            settings_panel.PerformLayout();
-            this.changes.ResumeLayout(false);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "bunk_generator";
+            this.settings_panel.ResumeLayout(false);
+            this.settings_panel.PerformLayout();
+            this.changes_panel.ResumeLayout(false);
             this.ResumeLayout(false);
         }
 
-        private System.Windows.Forms.Button changeOne_combobox_button;
+        private System.Windows.Forms.ComboBox comboBox_change_all_charact;
 
-        private System.Windows.Forms.Panel changes;
+        private System.Windows.Forms.Button button_change_all_characteristic;
 
-        private System.Windows.Forms.Panel blockPanel;
+        private System.Windows.Forms.Label label_change_all_characteristic_charact;
 
-        private System.Windows.Forms.Button btn_clear;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label_change_all_characteristic;
 
-        private System.Windows.Forms.GroupBox personsBox;
+        private System.Windows.Forms.ComboBox comboBox_change_one_person;
+        private System.Windows.Forms.ComboBox comboBox_change_one_charact;
 
-        private System.Windows.Forms.CheckBox checkBox_specialConditions;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.CheckBox checkBox3;
+        private System.Windows.Forms.Button button_change_one_characteristic;
 
-        private System.Windows.Forms.Button btn_start;
-        
-        private System.Windows.Forms.Button btn_load_settings;
+        private System.Windows.Forms.Label label_change_one_characteristic_person;
+        private System.Windows.Forms.Label label_change_one_characteristic_charact;
 
-        private System.Windows.Forms.Button dec_count_persons;
-        private System.Windows.Forms.Button inc_count_persons;
+        private System.Windows.Forms.Label label_change_one_characteristic;
 
-        private System.Windows.Forms.TextBox txt_person_counter;
+        private System.Windows.Forms.CheckBox checkBox_special_conditions;
+        private System.Windows.Forms.CheckBox checkBox_2;
+        private System.Windows.Forms.CheckBox checkBox_3;
 
-        private System.Windows.Forms.Button btn_save_settings;
-        
-        private System.Windows.Forms.ComboBox changeOne_combobox_charact;
-        private System.Windows.Forms.ComboBox changeOne_combobox_person_number;
-        private System.Windows.Forms.Button btnShowData;
+        private System.Windows.Forms.Button button_save_settings;
+        private System.Windows.Forms.Button button_load_settings;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button_stop_settings;
+        private System.Windows.Forms.Button button_start_settings;
+
+        private System.Windows.Forms.TextBox textBox_persons_counter;
+
+        private System.Windows.Forms.Button button_dec_persons_counter;
+        private System.Windows.Forms.Button button_inc_persons_counter;
+
+        private System.Windows.Forms.Label label_person_counter;
+
+        private System.Windows.Forms.GroupBox persons_panel;
+
+        private System.Windows.Forms.GroupBox settings_panel;
+        private System.Windows.Forms.GroupBox changes_panel;
 
         #endregion
     }

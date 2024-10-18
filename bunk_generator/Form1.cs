@@ -1,56 +1,71 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using bunk_generator.enums;
-using bunk_generator.handlers;
-using DotNetEnv;
+using bunk_generator.Services;
 
 namespace bunk_generator
 {
     public partial class Form1 : Form
     {
-        private Parameters _parameters;
-        private Frames _frames;
+        private Setting _setting;
         private string _DATA_PATH = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data");
         private string _SETTINGS_PATH = "settings.json";
+        private bool isGameStarted = false;
+
+        private Panel[] _panels;
         public Form1()
         {
             InitializeComponent();
-            _parameters = new Parameters();
-            _frames = new Frames();
+            _setting = new Setting();
         }
 
-        private void dec_count_persons_Click(object sender, EventArgs e)
+        private void button_inc_persons_counter_Click(object sender, EventArgs e)
         {
-            _parameters.DecPersonsCount();
-            txt_person_counter.Text = _parameters.PersonsCount.ToString();
+            _setting.IncPersonsCounter();
+            textBox_persons_counter.Text = _setting.PersonsCount.ToString();
         }
 
-        private void inc_count_persons_Click(object sender, EventArgs e)
+        private void button_dec_persons_counter_Click(object sender, EventArgs e)
         {
-            _parameters.IncPersonsCount();
-            txt_person_counter.Text = _parameters.PersonsCount.ToString();
+            _setting.DecPersonsCounter();
+            textBox_persons_counter.Text = _setting.PersonsCount.ToString();
         }
 
-        private void txt_person_counter_TextChanged(object sender, EventArgs e)
+        private void textBox_persons_counter_TextChanged(object sender, EventArgs e)
         {
-            _parameters.UpdatePersonsCount(txt_person_counter.Text);
+            _setting.UpdatePersonsCounter(textBox_persons_counter.Text);
         }
 
-        private void btn_save_settings_Click(object sender, EventArgs e)
+        private void checkBox_special_conditions_CheckedChanged(object sender, EventArgs e)
+        {
+            bool isChecked = checkBox_special_conditions.Checked;
+            _setting.SetSpecialConditions(isChecked);
+        }
+
+        private void button_save_settings_Click(object sender, EventArgs e)
         {
             string path = Path.Combine(_DATA_PATH, "game");
-            _parameters.SaveSettings(path, _SETTINGS_PATH);
+            _setting.SaveSettings(path, _SETTINGS_PATH);
             MessageBox.Show("The settings have been saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void btn_load_settings_Click(object sender, EventArgs e)
+        private void button_load_settings_Click(object sender, EventArgs e)
         {
             string filePath = Path.Combine(_DATA_PATH, "game", _SETTINGS_PATH);
-            if (_parameters.LoadSettings(filePath))
+            if (_setting.LoadSettings(filePath))
             {
-                txt_person_counter.Text = _parameters.PersonsCount.ToString();
-                checkBox_specialConditions.Checked = _parameters.IsSpecialConditions;
+                textBox_persons_counter.Text = _setting.PersonsCount.ToString();
+                checkBox_special_conditions.Checked = _setting.IsSpecialConditions;
+                checkBox_2.Checked = _setting.IsCheckBox_2;
+                checkBox_3.Checked = _setting.IsCheckBox_3;
+                MessageBox.Show("Settings loaded!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -58,71 +73,37 @@ namespace bunk_generator
             }
         }
 
-        private void btn_start_Click(object sender, EventArgs e)
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (_frames.PanelsCount != 0) return;
-            
-            _parameters.LockSettings(blockPanel);
-            // add characteristic types in comboBox
-            foreach (var characteristic in Enum.GetValues(typeof(CharacteristicType))) changeOne_combobox_charact.Items.Add(characteristic);
-
-            // Generate persons
-            int personsCount = _parameters.PersonsCount;
-            Person[] _persons = new Person[personsCount];
-            for (var i = 0; i < personsCount; i++)
-            {
-                _persons[i] = new Person(i);
-            }
-            
-            // Generate Frames
-            Panel[] panels = _frames.GenerateFrames(_persons);
-            foreach (var panel in panels)
-            {
-                personsBox.Controls.Add(panel);
-                if (panel.Tag is Person person) changeOne_combobox_person_number.Items.Add(person.Id);
-            }
-            changeOne_combobox_person_number.Items.Add("All");
+            bool isChecked = checkBox_2.Checked;
+            _setting.SetCheckBox_2(isChecked);
         }
 
-        private void btn_clear_Click(object sender, EventArgs e)
+        private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            Panel[] panels = _frames.ClearFrames();
-            if (panels.Length == 0) return;
-            
-            _parameters.UnlockSettings(blockPanel);
-            changeOne_combobox_charact.Items.Clear();
-            changeOne_combobox_person_number.Items.Clear();
-            foreach (var panel in panels) personsBox.Controls.Remove(panel);
+            bool isChecked = checkBox_3.Checked;
+            _setting.SetCheckBox_3(isChecked);
         }
 
-        private void changeOne_combobox_button_Click(object sender, EventArgs e)
+        private void button_start_settings_Click(object sender, EventArgs e)
         {
-            if (changeOne_combobox_charact.SelectedItem != null && changeOne_combobox_person_number.SelectedItem != null)
-            {
-                string personId = changeOne_combobox_person_number.SelectedItem.ToString();
-                string charact = changeOne_combobox_charact.SelectedItem.ToString();
+            if (isGameStarted) return;
 
-                if (Enum.TryParse(charact, out CharacteristicType selectedType))
-                {
-                    
-                    Person[] selectedPerson = _frames.GetPersonById(personId);
-                    foreach (var person in selectedPerson)
-                    {
-                        Person newPerson = person.ChangeCharacteristic(selectedType, person);
-                        _frames.UpdatePerson(newPerson);
-                    }
-                }
-            }
-            else
+            _setting.SavePersonsToFile();
+            _panels = GamesData.GenerateFrames();
+            foreach (var panel in _panels)
             {
-                MessageBox.Show("Please select both person number and attribute.");
+                persons_panel.Controls.Add(panel);
             }
+            isGameStarted = true;
         }
 
-        private void checkBox_specialConditions_CheckedChanged(object sender, EventArgs e)
+        private void button_stop_settings_Click(object sender, EventArgs e)
         {
-            bool isChecked = checkBox_specialConditions.Checked;
-            _parameters.SetSpecialConditions(isChecked);
+            if (!isGameStarted) return;
+
+            foreach (var panel in _panels) persons_panel.Controls.Remove(panel);
+            isGameStarted = false;
         }
     }
 }

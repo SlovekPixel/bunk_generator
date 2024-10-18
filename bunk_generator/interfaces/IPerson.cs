@@ -1,4 +1,4 @@
-﻿namespace bunk_generator.interfaces
+﻿namespace bunk_generator.Interfaces
 {
     public interface IPerson
     {

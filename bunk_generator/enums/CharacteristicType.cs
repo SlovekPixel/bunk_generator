@@ -1,4 +1,4 @@
-﻿namespace bunk_generator.enums
+namespace bunk_generator.Enums
 {
     public enum CharacteristicType
     {
