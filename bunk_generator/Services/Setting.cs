@@ -12,8 +12,8 @@ namespace bunk_generator.Services
     {
         public int PersonsCount { get; private set; }
         public bool IsSpecialConditions { get; private set; }
-        public bool IsCheckBox_2 { get; private set; }
-        public bool IsCheckBox_3 { get; private set; }
+        public bool IsGenerateFiles { get; private set; }
+        public bool IsHideParameters { get; private set; }
         private int _MAX_PERSONS = Env.GetInt("MAX_PLAYERS");
         private int _MIN_PERSONS = Env.GetInt("MIN_PLAYERS");
 
@@ -22,8 +22,8 @@ namespace bunk_generator.Services
         {
             PersonsCount = _MIN_PERSONS;
             IsSpecialConditions = false;
-            IsCheckBox_2 = false;
-            IsCheckBox_3 = false;
+            IsGenerateFiles = false;
+            IsHideParameters = false;
 
             // _person = new Person();
         }
@@ -54,8 +54,8 @@ namespace bunk_generator.Services
             {
                 PersonsCount = this.PersonsCount,
                 IsSpecialConditions = this.IsSpecialConditions,
-                IsCheckBox_2 = this.IsCheckBox_2,
-                IsCheckBox_3 = this.IsCheckBox_3,
+                IsGenerateFiles = this.IsGenerateFiles,
+                IsHideParameters = this.IsHideParameters,
                 _MAX_PERSONS = this._MAX_PERSONS,
                 _MIN_PERSONS = this._MIN_PERSONS
             };
@@ -72,8 +72,8 @@ namespace bunk_generator.Services
                 var settings = JsonSerializer.Deserialize<SettingsDto>(json);
                 this.UpdatePersonsCounter(settings.PersonsCount.ToString());
                 this.IsSpecialConditions = settings.IsSpecialConditions;
-                this.IsCheckBox_2 = settings.IsCheckBox_2;
-                this.IsCheckBox_3 = settings.IsCheckBox_3;
+                this.IsGenerateFiles = settings.IsGenerateFiles;
+                this.IsHideParameters = settings.IsHideParameters;
                 return true;
             }
             return false;
@@ -84,14 +84,14 @@ namespace bunk_generator.Services
             IsSpecialConditions = value;
         }
 
-        public void SetCheckBox_2(bool value)
+        public void SetGenerateFiles(bool value)
         {
-            IsCheckBox_2 = value;
+            IsGenerateFiles = value;
         }
         
-        public void SetCheckBox_3(bool value)
+        public void SetHideParameters(bool value)
         {
-            IsCheckBox_3 = value;
+            IsHideParameters = value;
         }
         
         public void SavePersonsToFile()

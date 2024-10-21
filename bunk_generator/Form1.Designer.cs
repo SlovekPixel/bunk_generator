@@ -30,8 +30,8 @@
         private void InitializeComponent()
         {
             this.settings_panel = new System.Windows.Forms.GroupBox();
-            this.checkBox_3 = new System.Windows.Forms.CheckBox();
-            this.checkBox_2 = new System.Windows.Forms.CheckBox();
+            this.checkBox_hide_parameters = new System.Windows.Forms.CheckBox();
+            this.checkBox_generate_files = new System.Windows.Forms.CheckBox();
             this.checkBox_special_conditions = new System.Windows.Forms.CheckBox();
             this.button_start_settings = new System.Windows.Forms.Button();
             this.button_stop_settings = new System.Windows.Forms.Button();
@@ -62,8 +62,8 @@
             // settings_panel
             // 
             this.settings_panel.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.settings_panel.Controls.Add(this.checkBox_3);
-            this.settings_panel.Controls.Add(this.checkBox_2);
+            this.settings_panel.Controls.Add(this.checkBox_hide_parameters);
+            this.settings_panel.Controls.Add(this.checkBox_generate_files);
             this.settings_panel.Controls.Add(this.checkBox_special_conditions);
             this.settings_panel.Controls.Add(this.button_start_settings);
             this.settings_panel.Controls.Add(this.button_stop_settings);
@@ -85,27 +85,27 @@
             this.settings_panel.TabStop = false;
             this.settings_panel.Text = "Settings";
             // 
-            // checkBox_3
+            // checkBox_hide_parameters
             // 
-            this.checkBox_3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox_3.Location = new System.Drawing.Point(6, 113);
-            this.checkBox_3.Name = "checkBox_3";
-            this.checkBox_3.Size = new System.Drawing.Size(288, 24);
-            this.checkBox_3.TabIndex = 13;
-            this.checkBox_3.Text = "checkBox3";
-            this.checkBox_3.UseVisualStyleBackColor = true;
-            this.checkBox_3.CheckedChanged += new System.EventHandler(this.checkBox3_CheckedChanged);
+            this.checkBox_hide_parameters.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox_hide_parameters.Location = new System.Drawing.Point(6, 113);
+            this.checkBox_hide_parameters.Name = "checkBox_hide_parameters";
+            this.checkBox_hide_parameters.Size = new System.Drawing.Size(288, 24);
+            this.checkBox_hide_parameters.TabIndex = 13;
+            this.checkBox_hide_parameters.Text = "Hide the parameters?";
+            this.checkBox_hide_parameters.UseVisualStyleBackColor = true;
+            this.checkBox_hide_parameters.CheckedChanged += new System.EventHandler(this.checkBox_hide_parameters_CheckedChanged);
             // 
-            // checkBox_2
+            // checkBox_generate_files
             // 
-            this.checkBox_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.checkBox_2.Location = new System.Drawing.Point(6, 83);
-            this.checkBox_2.Name = "checkBox_2";
-            this.checkBox_2.Size = new System.Drawing.Size(288, 24);
-            this.checkBox_2.TabIndex = 12;
-            this.checkBox_2.Text = "checkBox2";
-            this.checkBox_2.UseVisualStyleBackColor = true;
-            this.checkBox_2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
+            this.checkBox_generate_files.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox_generate_files.Location = new System.Drawing.Point(6, 83);
+            this.checkBox_generate_files.Name = "checkBox_generate_files";
+            this.checkBox_generate_files.Size = new System.Drawing.Size(288, 24);
+            this.checkBox_generate_files.TabIndex = 12;
+            this.checkBox_generate_files.Text = "Generate files?";
+            this.checkBox_generate_files.UseVisualStyleBackColor = true;
+            this.checkBox_generate_files.CheckedChanged += new System.EventHandler(this.checkBox_generate_files_CheckedChanged);
             // 
             // checkBox_special_conditions
             // 
@@ -248,11 +248,12 @@
             // comboBox_change_all_charact
             // 
             this.comboBox_change_all_charact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_change_all_charact.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_change_all_charact.FormattingEnabled = true;
             this.comboBox_change_all_charact.Location = new System.Drawing.Point(138, 169);
             this.comboBox_change_all_charact.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_change_all_charact.Name = "comboBox_change_all_charact";
-            this.comboBox_change_all_charact.Size = new System.Drawing.Size(97, 28);
+            this.comboBox_change_all_charact.Size = new System.Drawing.Size(97, 24);
             this.comboBox_change_all_charact.TabIndex = 9;
             // 
             // button_change_all_characteristic
@@ -260,10 +261,11 @@
             this.button_change_all_characteristic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_change_all_characteristic.Location = new System.Drawing.Point(6, 196);
             this.button_change_all_characteristic.Name = "button_change_all_characteristic";
-            this.button_change_all_characteristic.Size = new System.Drawing.Size(85, 30);
+            this.button_change_all_characteristic.Size = new System.Drawing.Size(127, 30);
             this.button_change_all_characteristic.TabIndex = 8;
-            this.button_change_all_characteristic.Text = "Change";
+            this.button_change_all_characteristic.Text = "Change all";
             this.button_change_all_characteristic.UseVisualStyleBackColor = true;
+            this.button_change_all_characteristic.Click += new System.EventHandler(this.button_change_all_characteristic_Click);
             // 
             // label_change_all_characteristic_charact
             // 
@@ -286,21 +288,23 @@
             // comboBox_change_one_charact
             // 
             this.comboBox_change_one_charact.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_change_one_charact.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_change_one_charact.FormattingEnabled = true;
             this.comboBox_change_one_charact.Location = new System.Drawing.Point(138, 76);
             this.comboBox_change_one_charact.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_change_one_charact.Name = "comboBox_change_one_charact";
-            this.comboBox_change_one_charact.Size = new System.Drawing.Size(97, 28);
+            this.comboBox_change_one_charact.Size = new System.Drawing.Size(97, 24);
             this.comboBox_change_one_charact.TabIndex = 5;
             // 
             // comboBox_change_one_person
             // 
             this.comboBox_change_one_person.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_change_one_person.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox_change_one_person.FormattingEnabled = true;
             this.comboBox_change_one_person.Location = new System.Drawing.Point(138, 50);
             this.comboBox_change_one_person.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_change_one_person.Name = "comboBox_change_one_person";
-            this.comboBox_change_one_person.Size = new System.Drawing.Size(97, 28);
+            this.comboBox_change_one_person.Size = new System.Drawing.Size(97, 24);
             this.comboBox_change_one_person.TabIndex = 4;
             // 
             // button_change_one_characteristic
@@ -308,10 +312,11 @@
             this.button_change_one_characteristic.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.button_change_one_characteristic.Location = new System.Drawing.Point(6, 103);
             this.button_change_one_characteristic.Name = "button_change_one_characteristic";
-            this.button_change_one_characteristic.Size = new System.Drawing.Size(85, 30);
+            this.button_change_one_characteristic.Size = new System.Drawing.Size(127, 30);
             this.button_change_one_characteristic.TabIndex = 3;
-            this.button_change_one_characteristic.Text = "Change";
+            this.button_change_one_characteristic.Text = " Change one";
             this.button_change_one_characteristic.UseVisualStyleBackColor = true;
+            this.button_change_one_characteristic.Click += new System.EventHandler(this.button_change_one_characteristic_Click);
             // 
             // label_change_one_characteristic_charact
             // 
@@ -392,8 +397,8 @@
         private System.Windows.Forms.Label label_change_one_characteristic;
 
         private System.Windows.Forms.CheckBox checkBox_special_conditions;
-        private System.Windows.Forms.CheckBox checkBox_2;
-        private System.Windows.Forms.CheckBox checkBox_3;
+        private System.Windows.Forms.CheckBox checkBox_generate_files;
+        private System.Windows.Forms.CheckBox checkBox_hide_parameters;
 
         private System.Windows.Forms.Button button_save_settings;
         private System.Windows.Forms.Button button_load_settings;

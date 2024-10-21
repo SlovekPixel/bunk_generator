@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace bunk_generator.Services
 {
-    public class GamesData
+    public class Game
     {
         public static Panel[] GenerateFrames()
         {
@@ -12,8 +12,8 @@ namespace bunk_generator.Services
             List<Person> persons = Setting.LoadPersonsFromFile();
             Panel[] panels = new Panel[persons.Count];
         
-            int currentX = _PADDINGS;
-            int currentY = _PADDINGS;
+            int currentX = _PADDINGS + 5;
+            int currentY = _PADDINGS + 5;
 
             foreach (var person in persons)
             {

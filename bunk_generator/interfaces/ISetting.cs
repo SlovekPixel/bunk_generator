@@ -8,16 +8,16 @@ namespace bunk_generator.Interfaces
     {
         int PersonsCount { get; }
         bool IsSpecialConditions { get; }
-        bool IsCheckBox_2 { get; }
-        bool IsCheckBox_3 { get; }
+        bool IsGenerateFiles { get; }
+        bool IsHideParameters { get; }
         void IncPersonsCounter();
         void DecPersonsCounter();
         void UpdatePersonsCounter(string newValue);
         void SaveSettings(string directoryPath, string fileName);
         bool LoadSettings(string filePath);
         void SetSpecialConditions(bool value);
-        void SetCheckBox_2(bool value);
-        void SetCheckBox_3(bool value);
+        void SetGenerateFiles(bool value);
+        void SetHideParameters(bool value);
         void SavePersonsToFile();
     }
 }

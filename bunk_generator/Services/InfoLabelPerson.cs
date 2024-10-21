@@ -25,7 +25,7 @@ namespace bunk_generator.Services
             infoLabel.TextAlign = ContentAlignment.TopLeft;
             infoLabel.BackColor = Color.FromArgb(240, 240, 240);
             infoLabel.BorderStyle = BorderStyle.FixedSingle;
-            infoLabel.Font = new Font("Arial", 8);
+            infoLabel.Font = new Font("Arial", 7);
 
             Panel squarePanel = new Panel();
             squarePanel.BackColor = Color.FromArgb(220, 235, 255);

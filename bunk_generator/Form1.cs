@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using bunk_generator.Enums;
 using bunk_generator.Services;
 
 namespace bunk_generator
@@ -63,8 +64,8 @@ namespace bunk_generator
             {
                 textBox_persons_counter.Text = _setting.PersonsCount.ToString();
                 checkBox_special_conditions.Checked = _setting.IsSpecialConditions;
-                checkBox_2.Checked = _setting.IsCheckBox_2;
-                checkBox_3.Checked = _setting.IsCheckBox_3;
+                checkBox_generate_files.Checked = _setting.IsGenerateFiles;
+                checkBox_hide_parameters.Checked = _setting.IsHideParameters;
                 MessageBox.Show("Settings loaded!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -73,16 +74,16 @@ namespace bunk_generator
             }
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        private void checkBox_generate_files_CheckedChanged(object sender, EventArgs e)
         {
-            bool isChecked = checkBox_2.Checked;
-            _setting.SetCheckBox_2(isChecked);
+            bool isChecked = checkBox_generate_files.Checked;
+            _setting.SetGenerateFiles(isChecked);
         }
 
-        private void checkBox3_CheckedChanged(object sender, EventArgs e)
+        private void checkBox_hide_parameters_CheckedChanged(object sender, EventArgs e)
         {
-            bool isChecked = checkBox_3.Checked;
-            _setting.SetCheckBox_3(isChecked);
+            bool isChecked = checkBox_hide_parameters.Checked;
+            _setting.SetHideParameters(isChecked);
         }
 
         private void button_start_settings_Click(object sender, EventArgs e)
@@ -90,10 +91,17 @@ namespace bunk_generator
             if (isGameStarted) return;
 
             _setting.SavePersonsToFile();
-            _panels = GamesData.GenerateFrames();
+            _panels = Game.GenerateFrames();
             foreach (var panel in _panels)
             {
                 persons_panel.Controls.Add(panel);
+                if (panel.Tag is Person person) comboBox_change_one_person.Items.Add(person.Id);
+            }
+
+            foreach (var characteristic in Enum.GetValues(typeof(CharacteristicType)))
+            {
+                comboBox_change_one_charact.Items.Add(characteristic);
+                comboBox_change_all_charact.Items.Add(characteristic);
             }
             isGameStarted = true;
         }
@@ -103,7 +111,34 @@ namespace bunk_generator
             if (!isGameStarted) return;
 
             foreach (var panel in _panels) persons_panel.Controls.Remove(panel);
+            comboBox_change_one_person.Items.Clear();
+            comboBox_change_one_charact.Items.Clear();
+            comboBox_change_all_charact.Items.Clear();
             isGameStarted = false;
+        }
+
+        private void button_change_one_characteristic_Click(object sender, EventArgs e)
+        {
+            if ((comboBox_change_one_person.SelectedItem != null) && (comboBox_change_one_charact.SelectedItem != null))
+            {
+                //TODO
+            }
+            else
+            {
+                MessageBox.Show("Please select both person number and attribute.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button_change_all_characteristic_Click(object sender, EventArgs e)
+        {
+            if (comboBox_change_all_charact.SelectedItem != null)
+            {
+                //TODO
+            }
+            else
+            {
+                MessageBox.Show("Please select both person attribute.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
