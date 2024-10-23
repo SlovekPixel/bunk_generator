@@ -16,12 +16,12 @@ namespace bunk_generator.Services
         public int Id { get; private set; }
         public string Gender { get; private set; }
         public string Age { get; private set; }
-        public string Job { get; private set; }
+        public List<string> Job { get; private set; }
         public bool Fertility { get; private set; }
         public string Health { get; private set; }
         public string Phobia { get; private set; }
-        public string Hobby { get; private set; }
-        public string Baggage { get; private set; }
+        public List<string> Hobby { get; private set; }
+        public List<string> Baggage { get; private set; }
         public string Fact1 { get; private set; }
         public string Fact2 { get; private set; }
         
@@ -43,19 +43,19 @@ namespace bunk_generator.Services
         {
             _random = new Random(i*100 + i * 2 + i % 3);
             Id = i;
-            Gender = this.GenerateCharacteristic(CharacteristicType.Gender);
-            Job = this.GenerateCharacteristic(CharacteristicType.Job);
-            Age = this.GenerateCharacteristic(CharacteristicType.Age);
-            Health = this.GenerateCharacteristic(CharacteristicType.Health);
-            Phobia = this.GenerateCharacteristic(CharacteristicType.Phobia);
-            Hobby = this.GenerateCharacteristic(CharacteristicType.Hobby);
-            Baggage = this.GenerateCharacteristic(CharacteristicType.Baggage);
-            Fact1 = this.GenerateCharacteristic(CharacteristicType.Fact1);
-            Fact2 = this.GenerateCharacteristic(CharacteristicType.Fact2);
+            Gender = this.GenerateSingleCharacteristic(CharacteristicType.Gender);
+            Job = this.GenerateListCharacteristic(CharacteristicType.Job);
+            Age = this.GenerateSingleCharacteristic(CharacteristicType.Age);
+            Health = this.GenerateSingleCharacteristic(CharacteristicType.Health);
+            Phobia = this.GenerateSingleCharacteristic(CharacteristicType.Phobia);
+            Hobby = this.GenerateListCharacteristic(CharacteristicType.Hobby);
+            Baggage = this.GenerateListCharacteristic(CharacteristicType.Baggage);
+            Fact1 = this.GenerateSingleCharacteristic(CharacteristicType.Fact1);
+            Fact2 = this.GenerateSingleCharacteristic(CharacteristicType.Fact2);
         }
 
         [JsonConstructor]
-        public Person(int id, string gender, string age, string job, bool fertility, string health, string phobia, string hobby, string baggage, string fact1, string fact2)
+        public Person(int id, string gender, string age, List<string> job, bool fertility, string health, string phobia, List<string> hobby, List<string> baggage, string fact1, string fact2)
         {
             Id = id;
             Gender = gender;
@@ -78,15 +78,49 @@ namespace bunk_generator.Services
         public override string ToString()
         {
             return $"№ {this.Id}\n" +
-                   $"Job: {this.Job}\n" +
+                   $"Job: {string.Join(", ", this.Job)}\n" +
                    $"Gender: {this.Gender} {this.Fertility}\n" +
                    $"Age: {this.Age}\n" +
                    $"Health: {this.Health}\n" +
                    $"Phobia: {this.Phobia}\n" +
-                   $"Hobby: {this.Hobby}\n" +
-                   $"Baggage: {this.Baggage}\n" +
+                   $"Hobby: {string.Join(", ", this.Hobby)}\n" +
+                   $"Baggage: {string.Join(", ", this.Baggage)}\n" +
                    $"Fact1: {this.Fact1}\n" +
                    $"Fact2: {this.Fact2}\n";
+        }
+        
+        private string GenerateSingleCharacteristic(CharacteristicType type)
+        {
+            CharacteristicMap.TryGetValue(type, out string fileName);
+            if (fileName == null) throw new FileNotFoundException();
+            
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", _PERSONS_DIRECTORY, fileName);
+            if (!File.Exists(path)) throw new FileNotFoundException();
+
+            if (type == CharacteristicType.Age)
+            {
+                var ages = JsonSerializer.Deserialize<List<int>>(File.ReadAllText(path));
+                int minAge = ages[0];
+                int maxAge = ages[1];
+
+                return _random.Next(minAge, maxAge).ToString();
+            }
+
+            var characters = JsonSerializer.Deserialize<List<string>>(File.ReadAllText(path));
+            return characters[_random.Next(characters.Count)];
+        }
+        
+        
+        private List<string> GenerateListCharacteristic(CharacteristicType type)
+        {
+            CharacteristicMap.TryGetValue(type, out string fileName);
+            if (fileName == null) throw new FileNotFoundException();
+
+            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", _PERSONS_DIRECTORY, fileName);
+            if (!File.Exists(path)) throw new FileNotFoundException();
+
+            var characters = JsonSerializer.Deserialize<List<string>>(File.ReadAllText(path));
+            return new List<string> { characters[_random.Next(characters.Count)] };
         }
 
         private string GenerateCharacteristic(CharacteristicType type)
