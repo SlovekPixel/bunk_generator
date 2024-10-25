@@ -18,6 +18,7 @@ namespace bunk_generator.Interfaces
         void SetSpecialConditions(bool value);
         void SetGenerateFiles(bool value);
         void SetHideParameters(bool value);
-        void SavePersonsToFile();
+        List<Person> SavePersonsToFile();
+        List<Person> LoadPersonsFromFile();
     }
 }

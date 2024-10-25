@@ -41,7 +41,8 @@ namespace bunk_generator.Services
 
         public Person(int i)
         {
-            _random = new Random(i*100 + i * 2 + i % 3);
+            int gameSeed = new Random((int)(DateTimeOffset.UtcNow.ToUnixTimeMilliseconds() % int.MaxValue)).Next();
+            _random = new Random(gameSeed + i * 15);
             Id = i;
             Gender = this.GenerateSingleCharacteristic(CharacteristicType.Gender);
             Job = this.GenerateListCharacteristic(CharacteristicType.Job);
@@ -69,12 +70,48 @@ namespace bunk_generator.Services
             Fact1 = fact1;
             Fact2 = fact2;
         }
+        
+        public void ChangeCharacteristic(CharacteristicType characteristicType)
+        {
+            switch (characteristicType)
+            {
+                case CharacteristicType.Gender:
+                    Gender = this.GenerateSingleCharacteristic(CharacteristicType.Gender);
+                    break;
+                case CharacteristicType.Job:
+                    Job = this.GenerateListCharacteristic(CharacteristicType.Job);
+                    break;
+                case CharacteristicType.Age:
+                    Age = this.GenerateSingleCharacteristic(CharacteristicType.Age);
+                    break;
+                case CharacteristicType.Health:
+                    Health = this.GenerateSingleCharacteristic(CharacteristicType.Health);
+                    break;
+                case CharacteristicType.Phobia:
+                    Phobia = this.GenerateSingleCharacteristic(CharacteristicType.Phobia);
+                    break;
+                case CharacteristicType.Hobby:
+                    Hobby = this.GenerateListCharacteristic(CharacteristicType.Hobby);
+                    break;
+                case CharacteristicType.Baggage:
+                    Baggage = this.GenerateListCharacteristic(CharacteristicType.Baggage);
+                    break;
+                case CharacteristicType.Fact1:
+                    Fact1 = this.GenerateSingleCharacteristic(CharacteristicType.Fact1);
+                    break;
+                case CharacteristicType.Fact2:
+                    Fact2 = this.GenerateSingleCharacteristic(CharacteristicType.Fact2);
+                    break;
+                default:
+                    throw new ArgumentException("Unknown characteristic type");
+            }
+        }
 
         public string ToJson()
         {
             return JsonSerializer.Serialize(this, new JsonSerializerOptions { WriteIndented = true });
         }
-        
+
         public override string ToString()
         {
             return $"№ {this.Id}\n" +
@@ -109,8 +146,7 @@ namespace bunk_generator.Services
             var characters = JsonSerializer.Deserialize<List<string>>(File.ReadAllText(path));
             return characters[_random.Next(characters.Count)];
         }
-        
-        
+
         private List<string> GenerateListCharacteristic(CharacteristicType type)
         {
             CharacteristicMap.TryGetValue(type, out string fileName);
@@ -121,27 +157,6 @@ namespace bunk_generator.Services
 
             var characters = JsonSerializer.Deserialize<List<string>>(File.ReadAllText(path));
             return new List<string> { characters[_random.Next(characters.Count)] };
-        }
-
-        private string GenerateCharacteristic(CharacteristicType type)
-        {
-            CharacteristicMap.TryGetValue(type, out string fileName);
-            if (fileName == null) throw new FileNotFoundException();
-            
-            string path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", _PERSONS_DIRECTORY, fileName);
-            if (!File.Exists(path)) throw new FileNotFoundException();
-
-            if (type == CharacteristicType.Age)
-            {
-                var ages = JsonSerializer.Deserialize<List<int>>(File.ReadAllText(path));
-                int minAge = ages[0];
-                int maxAge = ages[1];
-
-                return _random.Next(minAge, maxAge).ToString();
-            }
-            
-            var characters = JsonSerializer.Deserialize<List<string>>(File.ReadAllText(path));
-            return characters[_random.Next(characters.Count)];
         }
 
         public static List<Person> GeneratePersons(int count)

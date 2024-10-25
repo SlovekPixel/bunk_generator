@@ -6,14 +6,13 @@ namespace bunk_generator.Services
 {
     public class Game
     {
-        public static Panel[] GenerateFrames()
+        public static Panel[] GenerateFrames(List<Person> persons)
         {
-            int _PADDINGS = 5;
-            List<Person> persons = Setting.LoadPersonsFromFile();
+            int paddings = 5;
             Panel[] panels = new Panel[persons.Count];
-        
-            int currentX = _PADDINGS + 5;
-            int currentY = _PADDINGS + 5;
+
+            int currentX = paddings + 5;
+            int currentY = paddings + 5;
 
             foreach (var person in persons)
             {

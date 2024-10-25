@@ -1,12 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using bunk_generator.Enums;
 using bunk_generator.Services;
@@ -18,7 +13,7 @@ namespace bunk_generator
         private Setting _setting;
         private string _DATA_PATH = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data");
         private string _SETTINGS_PATH = "settings.json";
-        private bool isGameStarted = false;
+        private bool _isGameStarted = false;
 
         private Panel[] _panels;
         public Form1()
@@ -88,10 +83,10 @@ namespace bunk_generator
 
         private void button_start_settings_Click(object sender, EventArgs e)
         {
-            if (isGameStarted) return;
+            if (_isGameStarted) return;
 
-            _setting.SavePersonsToFile();
-            _panels = Game.GenerateFrames();
+            List<Person> persons = _setting.SavePersonsToFile();
+            _panels = Game.GenerateFrames(persons);
             foreach (var panel in _panels)
             {
                 persons_panel.Controls.Add(panel);
@@ -103,25 +98,40 @@ namespace bunk_generator
                 comboBox_change_one_charact.Items.Add(characteristic);
                 comboBox_change_all_charact.Items.Add(characteristic);
             }
-            isGameStarted = true;
+            _isGameStarted = true;
         }
 
         private void button_stop_settings_Click(object sender, EventArgs e)
         {
-            if (!isGameStarted) return;
+            if (!_isGameStarted) return;
 
             foreach (var panel in _panels) persons_panel.Controls.Remove(panel);
             comboBox_change_one_person.Items.Clear();
             comboBox_change_one_charact.Items.Clear();
             comboBox_change_all_charact.Items.Clear();
-            isGameStarted = false;
+            _isGameStarted = false;
         }
 
         private void button_change_one_characteristic_Click(object sender, EventArgs e)
         {
             if ((comboBox_change_one_person.SelectedItem != null) && (comboBox_change_one_charact.SelectedItem != null))
             {
-                //TODO
+                foreach (var panel in _panels) persons_panel.Controls.Remove(panel);
+                int selectedPersonId = (int)comboBox_change_one_person.SelectedItem;
+                CharacteristicType selectedCharacteristic = (CharacteristicType)comboBox_change_one_charact.SelectedItem;
+
+                List<Person> persons = _setting.LoadPersonsFromFile();
+                var selectedPerson = persons.FirstOrDefault(p => p.Id == selectedPersonId);
+                if (selectedPerson != null)
+                {
+                    selectedPerson.ChangeCharacteristic(selectedCharacteristic);
+                }
+                _setting.SavePersonsToFile();
+                _panels = Game.GenerateFrames(persons);
+                foreach (var panel in _panels)
+                {
+                    persons_panel.Controls.Add(panel);
+                }
             }
             else
             {

@@ -14,12 +14,5 @@ namespace bunk_generator.Interfaces
         List<string> Baggage { get; }
         string Fact1 { get; }
         string Fact2 { get; }
-
-        // string GenerateProfession();
-        //
-        // string GenerateGender();
-        //
-        // int GenerateAge();
-
     }
 }

@@ -16,8 +16,8 @@ namespace bunk_generator.Services
         public bool IsHideParameters { get; private set; }
         private int _MAX_PERSONS = Env.GetInt("MAX_PLAYERS");
         private int _MIN_PERSONS = Env.GetInt("MIN_PLAYERS");
+        private string _GAME_FILENAME = "new_game.json";
 
-        private Person _person;
         public Setting() 
         {
             PersonsCount = _MIN_PERSONS;
@@ -94,21 +94,20 @@ namespace bunk_generator.Services
             IsHideParameters = value;
         }
         
-        public void SavePersonsToFile()
+        public List<Person> SavePersonsToFile()
         {
             List<Person> persons = Person.GeneratePersons(PersonsCount);
             var jsonPersons = JsonSerializer.Serialize(persons, new JsonSerializerOptions { WriteIndented = true, Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
             string directoryPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data/game");
             Directory.CreateDirectory(directoryPath);
             
-            const string fileName = "new_game.json";
-            File.WriteAllText(Path.Combine(directoryPath, fileName), jsonPersons);
+            File.WriteAllText(Path.Combine(directoryPath, _GAME_FILENAME), jsonPersons);
+            return persons;
         }
         
-        public static List<Person> LoadPersonsFromFile()
+        public List<Person> LoadPersonsFromFile()
         {
-            const string fileName = "new_game.json";
-            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "game", fileName);
+            string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "data", "game", _GAME_FILENAME);
             return JsonSerializer.Deserialize<List<Person>>(File.ReadAllText(filePath));
         }
     }
